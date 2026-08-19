@@ -27,6 +27,13 @@ def format_time_readable(timestamp):
     )
 
 
+def format_time(timestamp):
+    return (
+        datetime.utcfromtimestamp(timestamp / 1000).strftime("%Y-%m-%dT%H:%M:%S.000Z")
+        if timestamp else None
+    )
+
+
 def format_date_for_name(sleep_date):
     return datetime.strptime(sleep_date, "%Y-%m-%d").strftime("%d.%m.%Y") if sleep_date else "Unknown"
 
