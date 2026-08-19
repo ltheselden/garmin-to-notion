@@ -27,13 +27,6 @@ def format_time_readable(timestamp):
     )
 
 
-def format_time_readable(timestamp):
-    return (
-        datetime.fromtimestamp(timestamp / 1000, local_tz).strftime("%H:%M")
-        if timestamp else "Unknown"
-    )
-
-
 def format_date_for_name(sleep_date):
     return datetime.strptime(sleep_date, "%Y-%m-%d").strftime("%d.%m.%Y") if sleep_date else "Unknown"
 
