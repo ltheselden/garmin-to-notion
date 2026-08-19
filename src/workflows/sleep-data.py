@@ -62,7 +62,7 @@ def create_sleep_data(client, database_id, sleep_data, skip_zero_sleep=True):
         return
 
     properties = {
-        "Date": {"title": [{"text": {"content": format_date_for_name(sleep_date)}}]},
+        "Date": {"title": [{"text": {"content": f"😴 Sleep: {format_duration(total_sleep)}"}}]},
         "Times": {"rich_text": [{"text": {
             "content": f"{format_time_readable(daily_sleep.get('sleepStartTimestampLocal'))} → {format_time_readable(daily_sleep.get('sleepEndTimestampLocal'))}"}}]},
         "Long Date": {"date": {"start": sleep_date}},
