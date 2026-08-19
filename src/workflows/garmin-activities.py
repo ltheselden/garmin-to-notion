@@ -40,6 +40,10 @@ def get_all_activities(garmin_client: GarminClient, limit: int = 1000) -> list[d
 def format_activity_type(activity_type: str, activity_name: str = "") -> tuple[str, str]:
     # First format the activity type as before
     formatted_type = activity_type.replace('_', ' ').title() if activity_type else "Unknown"
+    if formatted_type == "Tennis V2":
+    formatted_type = "Tennis"
+    if formatted_type == "Paddelball":
+    formatted_type = "Padel"
 
     # Initialize subtype as the same as the main type
     activity_subtype = formatted_type
