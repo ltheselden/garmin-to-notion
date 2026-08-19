@@ -5,9 +5,6 @@ from dotenv import load_dotenv, dotenv_values
 
 from src.helpers import get_garmin_client, get_notion_client
 
-# Constants
-local_tz = pytz.timezone("America/Toronto")
-
 # Load environment variables
 load_dotenv()
 CONFIG = dotenv_values()
@@ -23,10 +20,10 @@ def format_duration(seconds):
     return f"{minutes // 60}h {minutes % 60}m"
 
 
-def format_time(timestamp):
+def format_time_readable(timestamp):
     return (
-        datetime.utcfromtimestamp(timestamp / 1000).strftime("%Y-%m-%dT%H:%M:%S.000Z")
-        if timestamp else None
+        datetime.utcfromtimestamp(timestamp / 1000).strftime("%H:%M")
+        if timestamp else "Unknown"
     )
 
 
@@ -67,7 +64,7 @@ def create_sleep_data(client, database_id, sleep_data, skip_zero_sleep=True):
     properties = {
         "Date": {"title": [{"text": {"content": format_date_for_name(sleep_date)}}]},
         "Times": {"rich_text": [{"text": {
-            "content": f"{format_time_readable(daily_sleep.get('sleepStartTimestampGMT'))} → {format_time_readable(daily_sleep.get('sleepEndTimestampGMT'))}"}}]},
+            "content": f"{format_time_readable(daily_sleep.get('sleepStartTimestampLocal'))} → {format_time_readable(daily_sleep.get('sleepEndTimestampLocal'))}"}}]},
         "Long Date": {"date": {"start": sleep_date}},
         "Full Date/Time": {"date": {"start": format_time(daily_sleep.get('sleepStartTimestampGMT')),
                                     "end": format_time(daily_sleep.get('sleepEndTimestampGMT'))}},
