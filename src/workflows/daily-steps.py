@@ -5,16 +5,17 @@ from dotenv import load_dotenv
 from src.helpers import get_garmin_client, get_notion_client
 
 
-def get_all_daily_steps(garmin):
+def get_all_daily_steps(garmin, days_to_backfill=1095):
     """
-    Get last x days of daily step count data from Garmin Connect.
+    Get daily step count data from Garmin Connect for the last N days.
     """
-    startdate = date.today() - timedelta(days=1)
-    daterange = [startdate + timedelta(days=x)
-                 for x in range((date.today() - startdate).days)]  # excl. today
+    today = date.today()
+    daterange = [today - timedelta(days=x) for x in range(days_to_backfill)]
     daily_steps = []
     for d in daterange:
-        daily_steps += garmin.get_daily_steps(d.isoformat(), d.isoformat())
+        result = garmin.get_daily_steps(d.isoformat(), d.isoformat())
+        if result:
+            daily_steps += result
     return daily_steps
 
 
