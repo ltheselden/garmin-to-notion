@@ -29,6 +29,12 @@ ACTIVITY_ICONS = {
     "Treadmill Running": "https://img.icons8.com/?size=100&id=9794&format=png&color=000000",
     "Walking": "https://img.icons8.com/?size=100&id=9807&format=png&color=000000",
     "Yoga": "https://img.icons8.com/?size=100&id=9783&format=png&color=000000",
+    "Football": "https://img.icons8.com/?size=100&id=LDze7ETPiEDu&format=png&color=000000",
+    "Basketball": "https://img.icons8.com/?size=100&id=9817&format=png&color=000000",
+    "Badminton": "https://img.icons8.com/?size=100&id=9uHlHjPMfJxe&format=png&color=000000",
+    "Padel": "https://img.icons8.com/?size=100&id=5aEOCMnIGKsN&format=png&color=000000",
+    "Tennis": "https://img.icons8.com/?size=100&id=XgYrvU3XIgGi&format=png&color=000000",
+    
     # Add more mappings as needed
 }
 
